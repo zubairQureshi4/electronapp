@@ -15,25 +15,24 @@ const createWindow = () => {
     },
   });
   try {
-    mainWindow.webContents.on('before-input-event', (event, input) => {
+    mainWindow.webContents.on("before-input-event", (event, input) => {
       if (input.control || (input.alt && input.type === "keyDown")) {
         app.exit();
       }
     });
-    mainWindow.webContents.on('context-menu', (e, params) => {
+    mainWindow.webContents.on("context-menu", (e, params) => {
       const contextMenu = Menu.buildFromTemplate([
-        { label: 'Cut', role: 'cut' },
-        { label: 'Copy', role: 'copy' },
-        { label: 'Paste', role: 'paste' },
-        { label: 'Select All', role: 'selectAll' },
-        { type: 'separator' },
+        { label: "Cut", role: "cut" },
+        { label: "Copy", role: "copy" },
+        { label: "Paste", role: "paste" },
+        { label: "Select All", role: "selectAll" },
+        { type: "separator" },
       ]);
-  
+
       contextMenu.popup();
     });
 
-
-    mainWindow.loadURL("https://ecom.infinixaccountants.co.uk/frontend");
+    mainWindow.loadURL("https://ecom.infinixaccountants.co.uk/frontend/login.php?secret=$2b$10$h9ARk0qJsRe0okcSB3HkMuKJNxCu08xQQBDFSCdPr/x6L5sHKmzHy");
 
     mainWindow.setContentProtection("enable");
   } catch (error) {

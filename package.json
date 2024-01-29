@@ -12,6 +12,7 @@
   "author": "centillion",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
