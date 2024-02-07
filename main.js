@@ -32,7 +32,7 @@ const createWindow = () => {
       contextMenu.popup();
     });
 
-    mainWindow.loadURL("https://ecom.infinixaccountants.co.uk/frontend/login.php?secret=$2b$10$h9ARk0qJsRe0okcSB3HkMuKJNxCu08xQQBDFSCdPr/x6L5sHKmzHy");
+    mainWindow.loadURL("https://portal.educationverse.org/frontend/login.php?secret=41bc3ec91e48bba659add2e8201845d42f45493412916553111779679a260b14");
 
     mainWindow.setContentProtection("enable");
   } catch (error) {
