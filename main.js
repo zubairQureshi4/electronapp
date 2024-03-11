@@ -1,7 +1,20 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
+var macaddress = require('macaddress');
 
-const createWindow = () => {
+async function getMac() {
+  return new Promise((resolve, reject) => {
+    macaddress.one((err, mac) => {
+      if (err) {
+        reject(err); // Reject the promise if an error occurs
+      } else {
+        resolve(mac); // Resolve the promise with the MAC address
+      }
+    });
+  });
+}
+
+const createWindow = async () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -27,12 +40,22 @@ const createWindow = () => {
         { label: "Paste", role: "paste" },
         { label: "Select All", role: "selectAll" },
         { type: "separator" },
+        {
+          label: "Back",
+          click: () => {
+            if (mainWindow.webContents.canGoBack()) {
+              mainWindow.webContents.goBack();
+            }
+          },
+          // This will enable the Back option only if there is a history to go back to
+          enabled: mainWindow.webContents.canGoBack(),
+        },
       ]);
 
       contextMenu.popup();
     });
-
-    mainWindow.loadURL("https://portal.educationverse.org/frontend/login.php?secret=41bc3ec91e48bba659add2e8201845d42f45493412916553111779679a260b14");
+    let mac = await getMac()
+    mainWindow.loadURL("https://demo.educationverse.org/frontend/login.php?secret=833f3921ff7ac4f60c9b5bdf7096c5828f5138361a0a8b2096bbc6e0009901b1&mac="+mac);
 
     mainWindow.setContentProtection("enable");
   } catch (error) {

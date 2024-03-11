@@ -13,7 +13,10 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "getmac": "^6.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "macaddress": "^0.5.3"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.3.0",
